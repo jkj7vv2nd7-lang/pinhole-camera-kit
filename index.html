@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ピンホールカメラ工作キット ― サンペーパーで撮る厚紙のカメラ</title>
+<meta name="description" content="厚紙で作るピンホールカメラの型紙キット。サンペーパー（青写真）を使い、薬品も暗室もなしで撮影できます。">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" type="image/png" href="icon.png">
+<style>
+  :root{
+    --ink:#2b2620; --mut:#7a7264; --bg:#f5efe3; --card:#fffdf7; --line:#ddd2ba;
+    --accent:#2f5da3; --accent2:#b3541e; --soft:#f1e8d2; --dark:#26262a;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0; padding:0;}
+  body{font-family:"Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic UI","Yu Gothic",sans-serif; background:var(--bg); color:var(--ink); line-height:1.75; font-size:15.5px;}
+  header.top{background:linear-gradient(180deg,#3a3b40,#26262a); color:#f3ead6; padding:20px 16px 16px;}
+  header.top .wrap{max-width:860px; margin:0 auto;}
+  header.top h1{font-size:23px; margin:0 0 2px; letter-spacing:.04em;}
+  header.top .sub{font-size:13.5px; opacity:.85; margin:0;}
+  header.top .ver{font-size:11px; opacity:.6; margin:4px 0 0;}
+  main{max-width:860px; margin:0 auto; padding:14px 14px 60px;}
+  section.card{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px 18px; margin:0 0 16px;}
+  section.card h2{font-size:18px; margin:0 0 8px; border-left:5px solid var(--accent); padding-left:9px;}
+  section.card h3{font-size:15.5px; margin:14px 0 4px; color:var(--accent);}
+  p{margin:6px 0;}
+  ul,ol{margin:6px 0 6px 1.2em; padding:0;}
+  li{margin:3px 0;}
+  .small{font-size:13px; color:var(--mut);}
+  .note{background:#fdf3e0; border:1px solid #ecd9ac; border-radius:10px; padding:9px 12px; font-size:14px;}
+  .warn{background:#fdecec; border:1px solid #e5b4b4; border-radius:10px; padding:9px 12px; font-size:14px;}
+  table{border-collapse:collapse; width:100%; margin:8px 0; font-size:14.5px;}
+  th,td{border:1px solid var(--line); padding:6px 9px; text-align:left; vertical-align:top;}
+  th{background:var(--soft);}
+  .swatches{display:flex; flex-wrap:wrap; gap:8px; margin:10px 0;}
+  .swatch{display:flex; align-items:center; gap:8px; border:2px solid var(--line); background:#fff; border-radius:999px; padding:6px 13px 6px 7px; cursor:pointer; font-family:inherit; font-size:14px; font-weight:700; color:var(--ink);}
+  .swatch .dot{width:22px; height:22px; border-radius:50%; border:1px solid rgba(0,0,0,.25);}
+  .swatch[aria-pressed="true"]{border-color:var(--accent); background:#eef3fb;}
+  .previewbox{background:#e9e2cf; border:1px solid var(--line); border-radius:10px; padding:10px; overflow-x:auto;}
+  .previewbox svg{display:block; margin:0 auto; max-width:100%; height:auto; background:#fff; box-shadow:0 1px 5px rgba(0,0,0,.18);}
+  .pagetabs{display:flex; flex-wrap:wrap; gap:6px; margin:8px 0;}
+  .pagetabs button{border:1.5px solid var(--line); background:#fff; border-radius:8px; padding:5px 11px; font-family:inherit; font-size:13.5px; font-weight:700; cursor:pointer; color:var(--ink);}
+  .pagetabs button[aria-pressed="true"]{background:var(--accent); border-color:var(--accent); color:#fff;}
+  .row{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px;}
+  button.act, a.act{flex:1 1 200px; display:block; text-align:center; font-family:inherit; font-size:15px; font-weight:700; border-radius:10px; border:2px solid var(--accent); background:var(--accent); color:#fff; padding:11px 8px; cursor:pointer; text-decoration:none;}
+  button.act.sub, a.act.sub{background:#fff; color:var(--accent);}
+  .printimg{margin-top:10px; display:none;}
+  .printimg img{max-width:100%; border:1px solid var(--line);}
+  .kbd{background:#eee7d2; border-radius:4px; padding:0 5px; font-size:.92em;}
+  #boot-error{display:none; background:#fdecec; border:1px solid #d66; border-radius:10px; padding:12px 14px; margin:14px;}
+  .stepnum{display:inline-block; background:var(--accent); color:#fff; border-radius:50%; width:1.55em; height:1.55em; text-align:center; line-height:1.55em; font-weight:700; margin-right:.35em; font-size:.92em;}
+  footer{max-width:860px; margin:0 auto; padding:0 14px 40px; color:var(--mut); font-size:12.5px;}
+  @media print{
+    body{background:#fff;}
+    header.top, .noprint{display:none !important;}
+    section.card{border:none; border-radius:0; padding:6px 0;}
+  }
+</style>
+<noscript><style>main{display:none}</style></noscript>
+</head>
+<body>
+<noscript><div style="padding:20px; font-family:sans-serif;"><h1>ピンホールカメラ工作キット</h1><p>このアプリはJavaScriptが必要です。SafariやChromeなどのブラウザで開いてください。</p></div></noscript>
+<header class="top">
+  <div class="wrap">
+    <h1>ピンホールカメラ工作キット</h1>
+    <p class="sub">サンペーパーで撮る、厚紙のカメラ ― 薬品も暗室もいりません</p>
+    <p class="ver">バージョン：2026-11-03.2</p>
+  </div>
+</header>
+<div id="boot-error"><strong>読み込みに失敗しました。</strong>お手数ですが、ページを再読み込みしてください。それでも直らない場合は、ブラウザを変えてお試しください。</div>
+<main>
+  <section class="card" id="intro">
+    <h2>はじめに</h2>
+    <p>以前、科学クラブで子どもたちとピンホールカメラを作ったことがあります。世界中のWebサイトから型紙を集めては印刷し、どの形がよいか、子どもたちと試し撮りを重ねました。レンズの代わりは針で開けた小さな穴ひとつ。それでもちゃんと景色が写るのが不思議で、みんな夢中になったものです。</p>
+    <p>このキットは、その思い出をもう一度楽しめるようにまとめた、厚紙で作るピンホールカメラです。記録に使うのは銀塩の印画紙ではなく、<strong>サンペーパー（ソーラープリンティングペーパー／サイアノタイプ＝青写真）</strong>です。</p>
+    <ul>
+      <li><strong>薬品・暗室は不要</strong>です。直射日光の当たらない室内で紙をセットし、露光が終わったら<strong>水道水で洗うだけ</strong>で定着します。</li>
+      <li>サンペーパーは感度がとても低いので、露光は<strong>晴れた屋外で数十分〜数時間</strong>が前提です。のんびり待つのも、このカメラの楽しみです。</li>
+      <li>紙の大きさは<strong>L判（89×127mm）</strong>を基準に設計しました。大きな判のサンペーパーは、室内の明かりの下でハサミで切って使えます。</li>
+      <li>写る像は青と白が反転した「陰画（ネガ）」です。青写真らしい仕上がりを楽しんでください。</li>
+    </ul>
+    <p class="note">カメラの大きさは、幅140mm×高さ100mm×奥行き42mm（背面ホルダーを付けると約44mm）。往年の名機を思わせる箱型の比率にしましたが、商標やロゴは入れていない、雰囲気だけの意匠です。</p>
+  </section>
+
+  <section class="card" id="kit">
+    <h2>デザインと型紙</h2>
+    <p>配色を選ぶと、型紙の外側に印刷されるデザインが変わります。型紙は全部で6ページ（型紙4ページ＋説明書2ページ）です。各ページのボタンを押すと、印刷用の画像（A4・300dpi）が作られます。</p>
+    <div class="swatches" id="swatches" role="group" aria-label="デザイン選択"></div>
+    <div class="pagetabs" id="pagetabs" role="group" aria-label="型紙ページ選択"></div>
+    <div class="previewbox" id="preview"></div>
+    <div class="row noprint">
+      <button type="button" class="act" id="btnMakeImg">このページの印刷用画像を作る</button>
+      <a class="act sub" id="lnkDownload" href="#" download="pinhole-page.png" style="display:none;">画像を保存する</a>
+    </div>
+    <div class="printimg" id="printimg"></div>
+    <p class="small">印刷のしかた：作られた画像を開き、プリンタで<strong>「100%（実際のサイズ）」</strong>を選んでA4に印刷してください。拡大・縮小されると型紙が実寸になりません。印刷後は、型紙の隅にある<strong>赤い5cmの線</strong>が定規で測って5cmになっているか、必ず確認してください。写真を印刷するのと同じ要領（写真アプリに保存してからの印刷など）でも大丈夫です。</p>
+    <p class="small">線の約束：<strong>実線＝切る線</strong>、<strong>赤い破線＝折る線</strong>、<strong>網かけ＝のりしろ</strong>です。丸に英字の印が部品番号で、説明書の手順と対応しています。</p>
+    <p class="small">※型紙1の上面（ダイヤルや文字）は、組み立てたときにカメラの後ろ側から見て正しい向きになるよう、あえて逆向きに印刷されています。そのまま切り貼りしてください。</p>
+  </section>
+
+  <section class="card" id="materials">
+    <h2>材料と道具</h2>
+    <h3>材料</h3>
+    <ul>
+      <li>サンペーパー（ソーラープリンティングペーパー）L判、またはそれ以上の判を切って使う</li>
+      <li>厚紙（ケント紙・ボール紙など、0.5〜1mm厚）…型紙を貼って組み立てます。黒い厚紙だと内側の黒塗りを省けます</li>
+      <li>アルミ缶（空き缶）またはアルミ箔 …ピンホール板用、30×30mmほど</li>
+      <li>黒画用紙（内張り用。型紙の内張り部品を使う場合は不要）</li>
+      <li>木工用ボンドまたはスティックのり、両面テープ</li>
+      <li>セロハンテープ（遮光の仕上げ用）</li>
+    </ul>
+    <h3>道具</h3>
+    <ul>
+      <li>ハサミ、カッターナイフ、カッターマット</li>
+      <li>金属定規、折り目付け用の油性ボールペン（インクの切れたものが最適）</li>
+      <li>縫い針（ピンホール開け用）、細目の紙やすり（400番前後）</li>
+      <li>黒の油性マーカー（ピンホール板の内側を黒くするため）</li>
+      <li>洗面器（水洗い用）、洗濯ばさみとひも（乾かすため）</li>
+    </ul>
+    <p class="warn">安全のために：カッターと縫い針の扱いは大人が見守ってください。アルミ缶の切り口は鋭いので、必ず紙やすりで丸めてから使いましょう。屋外での露光中は、帽子と水分補給も忘れずに。</p>
+  </section>
+
+  <section class="card" id="assembly">
+    <h2>組み立て手順</h2>
+    <ol>
+      <li><span class="stepnum">1</span><strong>型紙を印刷する。</strong>全ページを100%（実際のサイズ）で印刷し、赤い5cmの線が実寸どおりか定規で確かめます。</li>
+      <li><span class="stepnum">2</span><strong>厚紙に貼る。</strong>型紙1〜4を厚紙にのりで貼ります（厚手の紙に直接印刷できる場合は省略可）。よく乾かしてから次へ。</li>
+      <li><span class="stepnum">3</span><strong>切り抜く。</strong>実線に沿って切り抜きます。部品A（本体）の前面にある四角い窓も切り抜きます。</li>
+      <li><span class="stepnum">4</span><strong>折り目を付ける。</strong>赤い破線に定規を当て、インクの切れたボールペンでなぞって折り目を付けます。</li>
+      <li><span class="stepnum">5</span><strong>本体を組む。</strong>部品Aは、<strong>印刷した面が外側</strong>になるように折ります。上面・底面の端にある「角のりしろ」を、側面の内側に貼って箱にします。背面は開いたままにします。</li>
+      <li><span class="stepnum">6</span><strong>内側を黒くする。</strong>内張り（部品H・I・J・L）を本体とホルダーの内側に貼ります。黒い厚紙を使った場合や、黒画用紙を同じ大きさに切って貼る場合も同じです。光を反射しない真っ黒が理想です。</li>
+      <li><span class="stepnum">7</span><strong>ピンホール板を作って付ける。</strong>部品E（ピンホール枠）の裏にアルミ片を貼り、中央に針で穴を開けます（作り方は次の章）。枠を本体の<strong>内側</strong>から、前面の窓に合わせて貼ります。</li>
+      <li><span class="stepnum">8</span><strong>シャッターを付ける。</strong>部品D（ガイドレール×2）を前面の目印の位置に貼り、部品C（シャッター板）を差し込みます。下の折り返しが指かけです。右へ滑らせると開き、左で閉じます。動きが固いときは、レールの内側を少し削ります。</li>
+      <li><span class="stepnum">9</span><strong>紙ホルダーを作る。</strong>部品Bは四辺のフラップを折って浅いフタの形にし、角を貼ります。内側に部品F（紙押さえ帯×2）を、<strong>上端と下端から2mm</strong>の位置に横向きに貼ります（帯の網かけ部分がのり付け箇所）。サンペーパーは帯の端から差し込んで固定します。部品G（光漏れ止め帯）は、ホルダー上辺フラップの内側に貼ります。</li>
+      <li><span class="stepnum">10</span><strong>遮光を確かめる。</strong>明るい部屋でホルダーを閉じ、継ぎ目から光が漏れていないか確かめます。漏れる所には部品P（遮光帯）やセロハンテープ（内側に黒画用紙を重ねて）を貼ってふさぎます。</li>
+    </ol>
+    <p class="note">ピンホールから紙までの距離（焦点距離）は<strong>約41mm</strong>です。底面は平らにしてあるので、机や地面に安定して置けます。長時間露光の間、風で動かないよう、置き場所と固定のしかたを工夫してください。</p>
+  </section>
+
+  <section class="card" id="pinhole">
+    <h2>ピンホールの作り方</h2>
+    <ol>
+      <li><span class="stepnum">1</span>アルミ缶を30×30mmほどに切り、切り口を紙やすりで丸めます。缶の代わりにアルミ箔でも作れます（箔は破れやすいので扱いは丁寧に）。</li>
+      <li><span class="stepnum">2</span>平らな台の上で、中心に縫い針の<strong>先端だけを軽く刺し</strong>、回しながら少しずつ穴を開けます。<strong>針の軸まで通してしまうと穴が大きくなりすぎます</strong>。先端だけの小さな穴がコツです。</li>
+      <li><span class="stepnum">3</span>裏側に出たバリを、紙やすりでそっと取り除きます。穴がつぶれないよう、円を描くように軽く当てます。</li>
+      <li><span class="stepnum">4</span>明るい方へ向けて穴をのぞき、<strong>丸く、縁がなめらか</strong>なことを確かめます。ゆがんでいたら、新しいアルミ片で作り直した方が、結果が安定します。</li>
+      <li><span class="stepnum">5</span>アルミ片の<strong>内側になる面</strong>を、黒の油性マーカーで黒く塗ります（内面反射を防ぐため）。</li>
+      <li><span class="stepnum">6</span>部品E（ピンホール枠）の裏に、穴が枠の中央に来るよう貼ります。</li>
+    </ol>
+    <p class="small">ちょうどよい穴の大きさ：計算式 <strong>d ≒ √(2.44 × λ × f)</strong>（λは光の波長、fは焦点距離）から、焦点距離 約41mmでは<strong>約0.23mm</strong>が最適です。サンペーパーは青〜紫外寄りの光に感じる性質があるので、実用の範囲は<strong>0.2〜0.25mm</strong>と考えてください（F値にして約180）。穴が大きいほど明るくなりますが像はぼやけ、小さいほどシャープですが露光は長くなります。大きすぎたと感じたら、遠慮なく新しいアルミ片で作り直しましょう。</p>
+  </section>
+
+  <section class="card" id="usage">
+    <h2>使い方と露出の目安</h2>
+    <ol>
+      <li><span class="stepnum">1</span><strong>紙をセットする。</strong>直射日光の当たらない室内で、ホルダーにサンペーパーを差し込みます。<strong>色の付いた面（乳剤面）をピンホール側</strong>に向けてください。セットしたらホルダーを本体に被せます。</li>
+      <li><span class="stepnum">2</span><strong>屋外に置く。</strong>撮りたい景色に向け、平らで安定した場所に置きます。シャッターが閉まっていることを確認してから運びましょう。</li>
+      <li><span class="stepnum">3</span><strong>露光する。</strong>シャッターを右へ滑らせて開け、目安の時間だけ待ちます。待つ間はカメラに触れません。</li>
+      <li><span class="stepnum">4</span><strong>閉じて持ち帰る。</strong>シャッターを左へ滑らせて閉じ、室内へ戻ります。</li>
+      <li><span class="stepnum">5</span><strong>水で洗う。</strong>紙を取り出し、水道水で1〜2分ほど洗います。白くなる部分のぬめり（未感光の薬剤）が流れ落ちたら、洗濯ばさみで吊るして乾かします。青と白が反転した陰画が現れます。</li>
+    </ol>
+    <h3>紙の表裏の見分け方と、セットのときの注意</h3>
+    <ul>
+      <li><strong>表（感光面）</strong>は、感光剤が塗られているため<strong>薄い黄緑〜クリーム色</strong>を帯びています。<strong>裏は白い紙の面</strong>です。光の弱い室内で、色とツヤの違いで見分けてください。</li>
+      <li>セットは<strong>感光面をピンホール側（前向き）</strong>にします。向きが逆だと写りません。</li>
+      <li>指紋（皮脂）が付くとムラのもとになるので、紙は<strong>縁だけを持ちます</strong>。折ったり、強く曲げたりしないでください。</li>
+      <li>直射日光や窓辺の強い光は避け、<strong>手早くセット</strong>します。使わない紙は、すぐに<strong>遮光袋に戻して</strong>保管してください。</li>
+    </ul>
+    <h3>露出の目安（サンペーパー＋ピンホール）</h3>
+    <table>
+      <tr><th>天気・条件</th><th>目安の時間</th><th>備考</th></tr>
+      <tr><td>快晴（被写体に直射日光）</td><td><strong>1〜2時間</strong></td><td>まず1時間でテストを。様子を見て加減します</td></tr>
+      <tr><td>晴れ（薄い雲がある）</td><td>2〜3時間</td><td>雲の量でかなり変わります</td></tr>
+      <tr><td>曇り</td><td>3〜5時間</td><td>午前中に始めるのがおすすめです</td></tr>
+      <tr><td>日陰・室内</td><td>おすすめしません</td><td>半日置いても薄いことが多い条件です</td></tr>
+    </table>
+    <p class="small">この表は出発点です。紙の銘柄、季節、時刻、紫外線の強さで大きく変わります。同じ景色で時間を変えて2〜3枚撮り比べる「テスト撮影」がいちばんの近道です。露光の途中でシャッターを開閉して中断・再開はできないので、時間配分は最初に決めておきましょう。</p>
+  </section>
+
+  <section class="card" id="nega">
+    <h2>ネガを普通の写真に戻す</h2>
+    <p>サンペーパーの写真は、青と白が反転した陰画（ネガ）です。スマホで撮って色を反転させると、普通の写真として眺められます。反転しただけでは黄〜橙色寄りの補色になりますが、「白黒で見る」に切り替えると自然な階調で楽しめます。</p>
+    <h3>スマホで撮るときのコツ</h3>
+    <ul>
+      <li>プリントが<strong>完全に乾いてから</strong>撮ります</li>
+      <li><strong>真上から</strong>、プリントが画面いっぱいになるように。紙とスマホを平行に（斜めだと台形にゆがみます）</li>
+      <li><strong>明るさが均一な場所</strong>で。自分の影や、窓の映り込みが入らないようにします</li>
+    </ul>
+    <h3>反転ツール</h3>
+    <div class="row noprint">
+      <button type="button" class="act" id="negaBtn">写真を選ぶ</button>
+      <input type="file" id="negaFile" accept="image/*" style="display:none;">
+    </div>
+    <label style="display:block; margin:10px 0;"><input type="checkbox" id="negaMono"> 白黒で見る（自然な階調になります）</label>
+    <div class="printimg" id="negaOut"></div>
+    <div class="row noprint">
+      <a class="act sub" id="negaSave" href="#" download="positive.jpg" style="display:none;">変換した写真を保存する</a>
+    </div>
+    <p class="small">選んだ写真が外部に送られることはありません。変換はすべてこの端末の中で行われます。</p>
+  </section>
+
+  <section class="card" id="trouble">
+    <h2>失敗例と対処</h2>
+    <table>
+      <tr><th>症状</th><th>考えられる原因</th><th>対処</th></tr>
+      <tr><td>何も写らない（ほぼ真っ白）</td><td>露光不足／シャッターが開いていなかった／ピンホールが塞がっている</td><td>時間を大幅に延ばす。穴を光にかざして開通を確認する</td></tr>
+      <tr><td>像が薄い</td><td>露光不足気味／曇天だった</td><td>次回は時間を1.5〜2倍に。快晴の日を選ぶ</td></tr>
+      <tr><td>全体が真っ青で像が見えない</td><td>露光過多／光漏れで全面が感光した</td><td>時間を短くする。継ぎ目の遮光を確かめ直す</td></tr>
+      <tr><td>すじ状のムラ・一部だけ青い</td><td>継ぎ目からの光漏れ</td><td>漏れる場所に遮光帯や黒画用紙を重ねて貼る</td></tr>
+      <tr><td>像がぼやける</td><td>露光中にカメラが動いた／穴が大きい・バリがある</td><td>置き場所を固定する。ピンホール板を作り直す</td></tr>
+      <tr><td>紙の端だけ写りが悪い</td><td>紙が反って平らでない</td><td>紙押さえ帯の下にきちんと差し込む。紙は使う直前に開封する</td></tr>
+    </table>
+    <p class="small">周辺が暗くなる（口径食）のはピンホールカメラの性質です。欠点ではなく、このカメラらしい味として楽しんでください。</p>
+  </section>
+
+  <section class="card" id="science">
+    <h2>仕組みのメモ</h2>
+    <ul>
+      <li>ピンホールカメラは、レンズの代わりに小さな穴で光を絞り、景色の像をそのまま紙の上に結ばせます。像は<strong>上下・左右が逆さま</strong>に写ります。</li>
+      <li>このカメラの焦点距離は約41mm、ピンホールの直径は約0.23mm（計算式 d ≒ √(2.44λf) から）、F値は約180。普通のカメラ（F2〜F4）より何千倍も暗いので、露光に時間がかかります。</li>
+      <li>サンペーパーは紫外線に反応する青写真の紙です。光が当たった所が青く残り、当たらなかった所は水洗いで流れて白くなります。だから明るい空ほど青く、影ほど白い「陰画」になります。</li>
+      <li>穴を小さくするほど像はシャープに、大きくするほど明るくなります。予備のピンホール枠（部品N・O）で、穴の大きさを変えた板を何枚か作って比べると、よい実験になります。</li>
+    </ul>
+  </section>
+</main>
+<footer>
+  <p>ピンホールカメラ工作キット ― 厚紙とサンペーパーで作る、針穴写真機。型紙・説明文・図はすべてこのキットのための書き下ろしです。往年のカメラの「雰囲気」を借りていますが、ブランド名やロゴは使用していません。</p>
+</footer>
+<script>
+"use strict";
+/* ================= 寸法（mm） ================= */
+var DIM = {
+  bodyW: 140, bodyH: 100, wall: 42, card: 1,          // 本体外形と厚紙
+  paperW: 127, paperH: 89,                            // L判
+  cavityW: 138, cavityH: 98,                          // 内寸（紙の収まり）
+  focal: 41.5,                                        // ピンホール〜紙面
+  holderW: 144, holderH: 104, holderFlap: 14,         // 紙ホルダー
+  bodyOuterAtRim: 142,                                // 壁の外側までの幅（140+厚紙2）
+  winX: 57, winY: 37, winS: 26                        // 前面の窓（部品A内・左上基準）
+};
+var DESIGNS = [
+  { id:"silver", name:"シルバートップ＋黒", top:"#c9cacd", topInk:"#2a2b2e", body:"#26262a", bodyInk:"#e8e2d2", leather:true },
+  { id:"black",  name:"オールブラック",     top:"#26262a", topInk:"#e8e2d2", body:"#1d1d20", bodyInk:"#e8e2d2", leather:true },
+  { id:"red",    name:"レッド",             top:"#c9cacd", topInk:"#2a2b2e", body:"#9c2b23", bodyInk:"#f6e9e2", leather:false },
+  { id:"blue",   name:"ブルー",             top:"#c9cacd", topInk:"#2a2b2e", body:"#274b73", bodyInk:"#e9eef4", leather:false },
+  { id:"green",  name:"グリーン",           top:"#3c3d40", topInk:"#ece7d8", body:"#2e5941", bodyInk:"#e9f0e6", leather:false }
+];
+var PAGES = [
+  { name:"型紙1 本体",         w:297, h:210, tpl:true  },
+  { name:"型紙2 ホルダーと小物", w:210, h:297, tpl:true  },
+  { name:"型紙3 内張りA",       w:210, h:297, tpl:true  },
+  { name:"型紙4 内張りBと予備", w:210, h:297, tpl:true  },
+  { name:"説明書1 材料と組み立て", w:210, h:297, tpl:false },
+  { name:"説明書2 撮影と露出",   w:210, h:297, tpl:false }
+];
+var NET = []; // 幾何検証用：{page,id,x,y,w,h,kind}
+function reg(page, id, x, y, w, h, kind){ NET.push({page:page, id:id, x:x, y:y, w:w, h:h, kind:kind||"part"}); }
+function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;"); }
+function txt(x, y, s, size, fill, anchor, extra){
+  return '<text x="'+x+'" y="'+y+'" font-size="'+size+'" fill="'+fill+'" text-anchor="'+(anchor||"middle")+'" font-family="sans-serif" '+(extra||"")+'>'+esc(s)+'</text>';
+}
+function badge(x, y, ch, dark){
+  return '<circle cx="'+x+'" cy="'+y+'" r="3.4" fill="'+(dark?"#f3ead6":"#1d1d20")+'" stroke="rgba(120,110,90,.6)" stroke-width="0.25"/>'
+       + txt(x, y+1.25, ch, 3.6, dark?"#1d1d20":"#fff");
+}
+var CUT = 'stroke="#1a1a1a" stroke-width="0.35"';
+var FOLD = 'stroke="#d43d2a" stroke-width="0.3" stroke-dasharray="3 2" fill="none"';
+function foldLine(x1, y1, x2, y2){ return '<line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" '+FOLD+'/>'; }
+function defs(){
+  return '<defs>'
+    + '<pattern id="hatch" width="2.6" height="2.6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="2.6" height="2.6" fill="#e7dfc9"/><line x1="0" y1="0" x2="0" y2="2.6" stroke="#a5936d" stroke-width="0.7"/></pattern>'
+    + '<pattern id="leather" width="3" height="3" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="0.55" fill="#000" opacity="0.16"/><circle cx="2.4" cy="2.3" r="0.5" fill="#fff" opacity="0.05"/></pattern>'
+    + '</defs>';
+}
+function calLine(page, x, y, vertical){
+  // 赤い5cm較正線（ちょうど50mm）
+  var x2 = vertical ? x : x + 50, y2 = vertical ? y + 50 : y;
+  reg(page, "cal", Math.min(x,x2), Math.min(y,y2), Math.abs(x2-x) || 0.4, Math.abs(y2-y) || 0.4, "cal");
+  var s = '<line x1="'+x+'" y1="'+y+'" x2="'+x2+'" y2="'+y2+'" stroke="#d42a1e" stroke-width="0.5"/>';
+  if (vertical){
+    s += '<line x1="'+(x-2)+'" y1="'+y+'" x2="'+(x+2)+'" y2="'+y+'" stroke="#d42a1e" stroke-width="0.5"/>';
+    s += '<line x1="'+(x-2)+'" y1="'+y2+'" x2="'+(x+2)+'" y2="'+y2+'" stroke="#d42a1e" stroke-width="0.5"/>';
+    s += '<text x="'+(x-3.4)+'" y="'+(y+25)+'" font-size="3.2" fill="#d42a1e" text-anchor="middle" font-family="sans-serif" transform="rotate(-90 '+(x-3.4)+' '+(y+25)+')">5cm</text>';
+  } else {
+    s += '<line x1="'+x+'" y1="'+(y-2)+'" x2="'+x+'" y2="'+(y+2)+'" stroke="#d42a1e" stroke-width="0.5"/>';
+    s += '<line x1="'+x2+'" y1="'+(y-2)+'" x2="'+x2+'" y2="'+(y+2)+'" stroke="#d42a1e" stroke-width="0.5"/>';
+    s += txt(x+25, y-1.6, "5cm", 3.2, "#d42a1e");
+  }
+  return s;
+}
+function pageHead(page, title){
+  var P = PAGES[page];
+  return txt(P.w/2, 6.0, title, 4.1, "#333")
+       + (P.tpl ? txt(P.w/2, 11.2, "実線＝切る線／赤い破線＝折る線／網かけ＝のりしろ　・　100%（実際のサイズ）で印刷し、赤い線が5cmか確かめてください", 2.9, "#777") : "");
+}
+/* ================= 前面パネルの意匠（140×100 ローカル） ================= */
+function frontFace(d){
+  var s = '<rect x="0" y="0" width="140" height="100" fill="'+d.body+'"/>';
+  if (d.leather) s += '<rect x="0" y="0" width="140" height="100" fill="url(#leather)"/>';
+  s += '<rect x="0" y="0" width="140" height="24" fill="'+d.top+'"/>';
+  s += '<line x1="0" y1="24" x2="140" y2="24" stroke="rgba(0,0,0,.4)" stroke-width="0.3"/>';
+  // ファインダー窓・距離計窓・丸窓（意匠）
+  s += '<rect x="14" y="6" width="30" height="12" rx="2" fill="#101216" stroke="#6d6f74" stroke-width="0.3"/>';
+  s += '<line x1="18" y1="9.5" x2="34" y2="9.5" stroke="#7fa3c8" stroke-width="1" opacity="0.5"/>';
+  s += '<rect x="54" y="7" width="18" height="10" rx="1.5" fill="#101216" stroke="#6d6f74" stroke-width="0.3"/>';
+  s += '<circle cx="122" cy="11" r="4.5" fill="#101216" stroke="#6d6f74" stroke-width="0.3"/>';
+  // シャッター用レールの貼り位置（破線の目印）
+  s += '<rect x="40" y="24" width="98" height="7" fill="none" stroke="#999" stroke-width="0.25" stroke-dasharray="2 2"/>';
+  s += '<rect x="40" y="69" width="98" height="7" fill="none" stroke="#999" stroke-width="0.25" stroke-dasharray="2 2"/>';
+  s += txt(89, 21.2, "レール貼り位置", 2.8, d.topInk, "middle", 'opacity="0.75"');
+  // ピンホールの窓（切り抜き）と位置合わせ十字
+  s += '<line x1="52" y1="50" x2="88" y2="50" stroke="#c9c2ae" stroke-width="0.25"/>';
+  s += '<line x1="70" y1="32" x2="70" y2="68" stroke="#c9c2ae" stroke-width="0.25"/>';
+  s += '<rect x="57" y="37" width="26" height="26" fill="#ffffff" stroke="#1a1a1a" stroke-width="0.5"/>';
+  s += txt(97, 53.2, "→ あける", 3.4, d.bodyInk, "start");
+  s += txt(70, 93, "P I N H O L E", 4.2, d.bodyInk, "middle", 'opacity="0.85"');
+  s += '<line x1="0" y1="97" x2="140" y2="97" stroke="rgba(0,0,0,.3)" stroke-width="0.3"/>';
+  s += badge(6, 6, "A");
+  return s;
+}
+/* ================= 上面パネルの意匠（140×42 ローカル・180°回転して使用） ================= */
+function topFace(d){
+  var s = '<g transform="translate(140,42) rotate(180)">';
+  s += '<rect x="0" y="0" width="140" height="42" fill="'+d.top+'"/>';
+  // 巻き戻しノブ（左）
+  s += '<circle cx="20" cy="21" r="8.5" fill="none" stroke="'+d.topInk+'" stroke-width="0.7"/>';
+  s += '<circle cx="20" cy="21" r="1.8" fill="'+d.topInk+'"/>';
+  // シャッターダイヤル（右）
+  s += '<circle cx="105" cy="21" r="11.5" fill="none" stroke="'+d.topInk+'" stroke-width="0.7"/>';
+  for (var i = 0; i < 12; i++){
+    var a = i * Math.PI / 6, c = Math.cos(a), sn = Math.sin(a);
+    s += '<line x1="'+(105 + 9.2*c).toFixed(1)+'" y1="'+(21 + 9.2*sn).toFixed(1)+'" x2="'+(105 + 11*c).toFixed(1)+'" y2="'+(21 + 11*sn).toFixed(1)+'" stroke="'+d.topInk+'" stroke-width="0.45"/>';
+  }
+  s += '<circle cx="105" cy="21" r="2.2" fill="'+d.topInk+'"/>';
+  // 巻き上げレバー（右端）
+  s += '<circle cx="128" cy="21" r="7" fill="none" stroke="'+d.topInk+'" stroke-width="0.7"/>';
+  s += '<g transform="rotate(-30 128 21)"><rect x="128" y="18.6" width="13" height="4.8" rx="2.4" fill="none" stroke="'+d.topInk+'" stroke-width="0.7"/></g>';
+  // 枚数窓
+  s += '<rect x="82" y="15" width="15" height="12" fill="#1c1c1e"/>' + txt(89.5, 24.4, "0", 6, "#fff");
+  // アクセサリーシュー
+  s += '<rect x="46" y="12" width="26" height="18" fill="none" stroke="'+d.topInk+'" stroke-width="0.8"/>';
+  s += '<rect x="50" y="15.5" width="18" height="11" fill="none" stroke="'+d.topInk+'" stroke-width="0.4"/>';
+  s += txt(10, 38.5, "PINHOLE CAMERA", 3, d.topInk, "start", 'opacity="0.8"');
+  s += "</g>";
+  return s;
+}
+/* ================= 型紙1：本体（横向きA4） ================= */
+function buildPage1(d){
+  var s = defs() + pageHead(0, "型紙 1／6 ― 本体（部品A）");
+  // 左壁・右壁
+  s += '<g transform="translate(36.5,55)"><rect width="42" height="100" fill="'+d.body+'"/>'
+     + (d.leather ? '<rect width="42" height="100" fill="url(#leather)"/>' : "")
+     + '<rect x="13" y="10" width="16" height="22" rx="3" fill="none" stroke="rgba(0,0,0,.45)" stroke-width="0.5"/>'
+     + txt(21, 94, "側面", 3, d.bodyInk) + "</g>";
+  s += '<g transform="translate(218.5,55)"><rect width="42" height="100" fill="'+d.body+'"/>'
+     + (d.leather ? '<rect width="42" height="100" fill="url(#leather)"/>' : "")
+     + '<rect x="13" y="10" width="16" height="22" rx="3" fill="none" stroke="rgba(0,0,0,.45)" stroke-width="0.5"/>'
+     + txt(21, 94, "側面", 3, d.bodyInk) + "</g>";
+  reg(0, "wallL", 36.5, 55, 42, 100); reg(0, "wallR", 218.5, 55, 42, 100);
+  // 上面・底面
+  s += '<g transform="translate(78.5,13)">' + topFace(d) + "</g>";
+  s += '<g transform="translate(78.5,155)"><rect width="140" height="42" fill="'+d.body+'"/>'
+     + '<rect x="45" y="8" width="50" height="26" fill="none" stroke="rgba(0,0,0,.35)" stroke-width="0.4"/>'
+     + txt(70, 24.5, "底面", 3, d.bodyInk) + "</g>";
+  reg(0, "wallT", 78.5, 13, 140, 42); reg(0, "wallB", 78.5, 155, 140, 42);
+  // 角のりしろ（上面・底面の両端）
+  [[66.5,13],[218.5,13],[66.5,155],[218.5,155]].forEach(function(p, i){
+    s += '<rect x="'+p[0]+'" y="'+p[1]+'" width="12" height="42" fill="url(#hatch)"/>' + txt(p[0]+6, p[1]+22.5, "のり", 2.6, "#6b5c33");
+    reg(0, "tab"+i, p[0], p[1], 12, 42, "glue");
+  });
+  // 前面
+  s += '<g transform="translate(78.5,55)">' + frontFace(d) + "</g>";
+  reg(0, "front", 78.5, 55, 140, 100);
+  // 外形の切り取り線
+  s += '<path d="M66.5 13 H230.5 V55 H260.5 V155 H230.5 V197 H66.5 V155 H36.5 V55 H66.5 Z" fill="none" stroke="#1a1a1a" stroke-width="0.35"/>';
+  // 折り線
+  s += foldLine(78.5, 13, 78.5, 55) + foldLine(218.5, 13, 218.5, 55)
+     + foldLine(78.5, 155, 78.5, 197) + foldLine(218.5, 155, 218.5, 197)
+     + foldLine(78.5, 55, 218.5, 55) + foldLine(78.5, 155, 218.5, 155)
+     + foldLine(78.5, 55, 78.5, 155) + foldLine(218.5, 55, 218.5, 155);
+  s += calLine(0, 20, 30, true);
+  return s;
+}
+/* ================= 型紙2：ホルダーと小物（縦向きA4） ================= */
+function holderFace(d){
+  var s = "";
+  // フラップ（台形・外周は長方形にそろう）
+  s += '<path d="M-14 -14 H158 L144 0 H0 Z" fill="'+d.body+'"/>';
+  s += '<path d="M0 104 H144 L158 118 H-14 Z" fill="'+d.body+'"/>';
+  s += '<path d="M-14 -14 L0 0 V104 L-14 118 Z" fill="'+d.body+'"/>';
+  s += '<path d="M144 0 L158 -14 V118 L144 104 Z" fill="'+d.body+'"/>';
+  // パネル面の意匠
+  s += '<rect x="0" y="0" width="144" height="104" fill="'+d.body+'"/>';
+  if (d.leather) s += '<rect x="0" y="0" width="144" height="104" fill="url(#leather)"/>';
+  s += '<rect x="0" y="0" width="144" height="24" fill="'+d.top+'"/>';
+  s += '<line x1="0" y1="24" x2="144" y2="24" stroke="rgba(0,0,0,.4)" stroke-width="0.3"/>';
+  s += '<rect x="44" y="34" width="56" height="40" fill="none" stroke="'+d.bodyInk+'" stroke-width="0.6" opacity="0.85"/>';
+  s += '<rect x="47.5" y="37.5" width="49" height="33" fill="none" stroke="'+d.bodyInk+'" stroke-width="0.3" opacity="0.6"/>';
+  s += txt(72, 57.5, "メモ", 3.4, d.bodyInk, "middle", 'opacity="0.75"');
+  s += txt(72, 92, "P I N H O L E", 4, d.bodyInk, "middle", 'opacity="0.85"');
+  s += badge(7, 7, "B");
+  // 折り線（パネルの四辺とフラップの斜め）
+  s += foldLine(0, 0, 144, 0) + foldLine(0, 104, 144, 104) + foldLine(0, 0, 0, 104) + foldLine(144, 0, 144, 104);
+  s += '<rect x="-14" y="-14" width="172" height="132" fill="none" stroke="#1a1a1a" stroke-width="0.35"/>';
+  return s;
+}
+function foilFrame(x, y, size, win, ch){
+  var m = (size - win) / 2;
+  return '<g transform="translate('+x+','+y+')">'
+    + '<rect width="'+size+'" height="'+size+'" fill="#efe9db" '+CUT+'/>'
+    + '<rect x="'+m+'" y="'+m+'" width="'+win+'" height="'+win+'" fill="#fff" stroke="#1a1a1a" stroke-width="0.45"/>'
+    + '<line x1="'+(size/2)+'" y1="2" x2="'+(size/2)+'" y2="6" stroke="#b0a888" stroke-width="0.3"/>'
+    + '<line x1="'+(size/2)+'" y1="'+(size-6)+'" x2="'+(size/2)+'" y2="'+(size-2)+'" stroke="#b0a888" stroke-width="0.3"/>'
+    + badge(4, 4, ch) + "</g>";
+}
+function shutterPart(x, y, d, ch){
+  return '<g transform="translate('+x+','+y+')">'
+    + '<rect width="48" height="38" fill="'+d.top+'" '+CUT+'/>'
+    + '<line x1="12" y1="19" x2="34" y2="19" stroke="'+d.topInk+'" stroke-width="1.1"/>'
+    + '<path d="M34 14 L41 19 L34 24 Z" fill="'+d.topInk+'"/>'
+    + '<rect y="38" width="48" height="12" fill="'+d.body+'" '+CUT+'/>'
+    + foldLine(0, 38, 48, 38)
+    + txt(24, 46.2, "指かけ", 2.8, d.bodyInk)
+    + badge(4, 4, ch) + "</g>";
+}
+function buildPage2(d){
+  var s = defs() + pageHead(1, "型紙 2／6 ― 紙ホルダー（部品B）と小部品");
+  s += '<g transform="translate(24,28)">' + holderFace(d) + "</g>";
+  reg(1, "holder", 10, 14, 172, 132);
+  s += foilFrame(10, 154, 44, 26, "E");
+  s += txt(32, 202.5, "アルミ箔を裏に貼る", 2.8, "#555");
+  reg(1, "foilFrame", 10, 154, 44, 44);
+  s += shutterPart(62, 154, d, "C");
+  reg(1, "shutter", 62, 154, 48, 50);
+  // ガイドレール×2
+  [212, 223].forEach(function(y, i){
+    s += '<rect x="10" y="'+y+'" width="98" height="7" fill="#d9cfb8" '+CUT+'/>';
+    if (i === 0) s += badge(14, y + 3.5, "D");
+    reg(1, "rail"+i, 10, y, 98, 7);
+  });
+  // 紙押さえ帯×2（のり付け：外側の長辺＋右端。左端が差し込み口）
+  [[238, true],[256, false]].forEach(function(cfg, i){
+    var y = cfg[0];
+    s += '<rect x="10" y="'+y+'" width="130" height="14" fill="#d9cfb8" '+CUT+'/>';
+    s += '<rect x="130" y="'+y+'" width="10" height="14" fill="url(#hatch)"/>';
+    if (cfg[1]) s += '<rect x="10" y="'+y+'" width="130" height="4" fill="url(#hatch)"/>';
+    else s += '<rect x="10" y="'+(y+10)+'" width="130" height="4" fill="url(#hatch)"/>';
+    if (i === 0) s += badge(16, y + 7, "F") + txt(16, y - 2.5, "左端から紙を差し込む", 2.8, "#555", "start");
+    reg(1, "band"+i, 10, y, 130, 14);
+  });
+  // 光漏れ止め帯
+  s += '<rect x="10" y="274" width="130" height="10" fill="#26262a" '+CUT+'/>'
+     + txt(75, 280.8, "光漏れ止め", 3, "#f3ead6") + badge(16, 279, "G");
+  reg(1, "lip", 10, 274, 130, 10);
+  s += calLine(1, 195, 154, true);
+  return s;
+}
+/* ================= 型紙3・4：内張りと予備 ================= */
+function linerPart(page, x, y, w, h, ch, label, vertical){
+  var s = '<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" fill="#141414" '+CUT+'/>' + badge(x + 6, y + 6, ch, false);
+  if (vertical) s += '<text x="'+(x + w/2 - 1.2)+'" y="'+(y + h/2)+'" font-size="3.2" fill="#f3ead6" text-anchor="middle" font-family="sans-serif" transform="rotate(-90 '+(x + w/2 - 1.2)+' '+(y + h/2)+')">'+esc(label)+'</text>';
+  else s += txt(x + w/2, y + h/2 + 1.4, label, 3.4, "#f3ead6");
+  reg(page, "liner" + ch + x, x, y, w, h);
+  return s;
+}
+function buildPage3(d){
+  var s = defs() + pageHead(2, "型紙 3／6 ― 内張りA（黒）");
+  s += linerPart(2, 10, 13, 136, 96, "H", "前面の内張り", false);
+  s += linerPart(2, 150, 13, 38, 96, "J", "側面の内張り", true);
+  s += linerPart(2, 10, 113, 140, 100, "I", "ホルダーの内張り", false);
+  s += linerPart(2, 154, 113, 38, 96, "J", "側面の内張り", true);
+  s += '<rect x="10" y="217" width="180" height="30" fill="#141414" '+CUT+'/>'
+     + badge(16, 223, "K") + txt(100, 235.5, "黒帯（予備・遮光の仕上げ用）", 3.4, "#f3ead6");
+  reg(2, "blackStrip", 10, 217, 180, 30);
+  s += calLine(2, 10, 265, false);
+  return s;
+}
+function buildPage4(d){
+  var s = defs() + pageHead(3, "型紙 4／6 ― 内張りB（黒）と予備部品");
+  s += linerPart(3, 10, 13, 136, 38, "L", "上・下の内張り", false);
+  s += linerPart(3, 10, 55, 136, 38, "L", "上・下の内張り", false);
+  s += shutterPart(10, 98, d, "M");
+  reg(3, "spareShutter", 10, 98, 48, 50);
+  s += foilFrame(66, 98, 44, 26, "N"); reg(3, "spareFoil1", 66, 98, 44, 44);
+  s += foilFrame(118, 98, 44, 26, "N"); reg(3, "spareFoil2", 118, 98, 44, 44);
+  s += foilFrame(10, 156, 34, 18, "O"); reg(3, "practice1", 10, 156, 34, 34);
+  s += foilFrame(52, 156, 34, 18, "O"); reg(3, "practice2", 52, 156, 34, 34);
+  [198, 214].forEach(function(y, i){
+    s += '<rect x="10" y="'+y+'" width="180" height="12" fill="#26262a" '+CUT+'/>';
+    if (i === 0) s += badge(16, y + 6, "P") + txt(100, y + 8, "遮光帯", 3.2, "#f3ead6");
+    reg(3, "seal"+i, 10, y, 180, 12);
+  });
+  s += calLine(3, 10, 240, false);
+  s += txt(10, 256, "部品M〜Pは予備と仕上げ用です。足りない部品は、黒画用紙や厚紙から切り出しても作れます。", 3.3, "#555", "start");
+  return s;
+}
+/* ================= 説明書ページ（5・6） ================= */
+function textPage(title, blocks){
+  var s = txt(105, 14, title, 5.2, "#26262a", "middle", 'font-weight="700"');
+  s += '<line x1="12" y1="18" x2="198" y2="18" stroke="#b3541e" stroke-width="0.6"/>';
+  var y = 27;
+  blocks.forEach(function(b){
+    if (b.t === "h"){ s += txt(12, y, b.s, 4.6, "#2f5da3", "start", 'font-weight="700"'); y += 8.4; }
+    else { b.lines.forEach(function(ln){ s += txt(14, y, ln, 3.9, "#2b2620", "start"); y += 5.9; }); y += 2.6; }
+  });
+  return s;
+}
+function buildPage5(){
+  return textPage("説明書 1／2 ― 材料と組み立て", [
+    { t:"h", s:"材料" },
+    { t:"p", lines:[
+      "・サンペーパー（ソーラープリンティングペーパー）L判、または大きな判を切って使う",
+      "・厚紙（ケント紙・ボール紙など 0.5〜1mm）　・アルミ缶またはアルミ箔（30×30mm）",
+      "・黒画用紙（内張りの代用に）　・木工用ボンド／スティックのり、両面テープ、セロハンテープ"] },
+    { t:"h", s:"道具" },
+    { t:"p", lines:[
+      "・ハサミ、カッター、カッターマット、金属定規",
+      "・縫い針、細目の紙やすり、黒の油性マーカー、インクの切れたボールペン（折り目付け）",
+      "・洗面器、洗濯ばさみとひも（水洗いと乾燥用）"] },
+    { t:"h", s:"組み立て手順" },
+    { t:"p", lines:[
+      "1. 型紙を100%で印刷し、赤い線が5cmちょうどか定規で確かめる。",
+      "2. 型紙1〜4を厚紙に貼り、よく乾かす（厚手の紙に直接印刷した場合は不要）。",
+      "3. 実線に沿って切り抜く。部品Aの前面の四角い窓も切り抜く。",
+      "4. 赤い破線に定規を当て、ボールペンでなぞって折り目を付ける。",
+      "5. 部品Aは印刷面が外側になるよう折り、角のりしろを側面の内側に貼って箱にする。",
+      "6. 内張り（H・I・J・L）を内側に貼る。黒い厚紙や黒画用紙でもよい。",
+      "7. ピンホール板（部品E＋アルミ片）を、本体の内側から前面の窓に合わせて貼る。",
+      "8. ガイドレール（D×2）を前面の目印に貼り、シャッター（C）を差し込む。",
+      "9. ホルダー（B）のフラップを折って角を貼る。内側に紙押さえ帯（F×2）を、",
+      "　 上端と下端から2mmの位置に横向きに貼る。光漏れ止め帯（G）は上辺の内側へ。",
+      "10. ホルダーを閉じ、明るい部屋で継ぎ目から光が漏れないか確かめる。",
+      "　 漏れる所は遮光帯（P）や黒画用紙でふさぐ。"] },
+    { t:"h", s:"寸法のメモ" },
+    { t:"p", lines:[
+      "・本体：幅140×高さ100×奥行き42mm（ホルダーを付けると約44mm）",
+      "・ピンホールから紙まで（焦点距離）：約41mm　・紙：L判 89×127mm",
+      "・底面は平らです。長時間露光の間、風で動かない置き方を工夫してください。"] }
+  ]);
+}
+function buildPage6(){
+  return textPage("説明書 2／2 ― ピンホール・使い方・露出", [
+    { t:"h", s:"ピンホールの作り方" },
+    { t:"p", lines:[
+      "1. アルミ缶を30×30mmに切り、切り口を紙やすりで丸める。",
+      "2. 中心に縫い針の先端だけを軽く刺し、回しながら穴を開ける。",
+      "　 最適は約0.23mm（計算式 d≒√(2.44λf)）、実用は0.2〜0.25mm。軸まで通さないこと。",
+      "3. 裏のバリを紙やすりでそっと取る。光にかざし、丸い穴か確かめる。",
+      "4. 内側になる面を黒マーカーで塗り、部品Eの裏に中央を合わせて貼る。"] },
+    { t:"h", s:"使い方" },
+    { t:"p", lines:[
+      "1. 直射日光の当たらない室内で、ホルダーに紙をセットする（色の付いた面が前向き）。",
+      "2. ホルダーを被せ、シャッターが閉じていることを確かめて屋外へ運ぶ。",
+      "3. 景色に向けて平らな場所に置き、シャッターを右へ滑らせて開ける。",
+      "4. 目安の時間がたったらシャッターを閉じ、室内へ戻る。",
+      "5. 紙を取り出し、水道水で1〜2分洗って吊るし乾かす。青と白の陰画が現れる。",
+      "・紙の表（感光面）は薄い黄緑〜クリーム色、裏は白。光の弱い室内で色とツヤで見分ける。",
+      "・紙は縁だけを持つ（指紋はムラのもと）。折らず、使わない紙は遮光袋へ戻す。"] },
+    { t:"h", s:"ネガを普通の写真に戻す" },
+    { t:"p", lines:[
+      "・乾いたプリントをスマホで真上から撮り、アプリ内の反転ツールで色を反転する。",
+      "・反転だけでは黄〜橙寄りの色になる。「白黒で見る」切替が自然。",
+      "・撮るときは均一な明るさで、自分の影や窓の映り込みが入らないように。"] },
+    { t:"h", s:"露出の目安（出発点です。まずテストを）" },
+    { t:"p", lines:[
+      "・快晴（直射日光）… 1〜2時間（まず1時間でテスト）",
+      "・晴れ（薄い雲）… 2〜3時間　　　・曇り … 3〜5時間（午前中に始める）",
+      "・日陰・室内 … おすすめしません（半日でも薄いことが多い）",
+      "紙の銘柄・季節・時刻で大きく変わります。時間を変えて2〜3枚の撮り比べが近道です。"] },
+    { t:"h", s:"失敗と対処" },
+    { t:"p", lines:[
+      "・ほぼ真っ白 … 露光不足／シャッター未開放／穴の詰まり。時間を延ばし穴を確認。",
+      "・像が薄い … 露光不足気味。次回は1.5〜2倍の時間に。",
+      "・全体が真っ青 … 露光過多か光漏れ。時間を短くし、継ぎ目の遮光を確認。",
+      "・すじ状のムラ … 継ぎ目からの光漏れ。遮光帯や黒画用紙を重ねる。",
+      "・ぼやける … 露光中の揺れ、または穴が大きい。固定を強くし、板を作り直す。"] },
+    { t:"h", s:"安全のために" },
+    { t:"p", lines:[
+      "・カッターと縫い針は大人が見守る。アルミの切り口は必ずやすりで丸める。",
+      "・屋外での露光中は帽子と水分補給を。薬品は使わず、水洗いだけで定着します。"] }
+  ]);
+}
+/* ================= ページ組み立て ================= */
+var BUILDERS = [
+  function(d){ return buildPage1(d); },
+  function(d){ return buildPage2(d); },
+  function(d){ return buildPage3(d); },
+  function(d){ return buildPage4(d); },
+  function(){ return buildPage5(); },
+  function(){ return buildPage6(); }
+];
+function buildPage(pageIdx, design, forExport){
+  NET = NET.filter(function(e){ return e.page !== pageIdx; });
+  var P = PAGES[pageIdx];
+  var inner = BUILDERS[pageIdx](design);
+  return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 '+P.w+" "+P.h+'" width="'+P.w+'mm" height="'+P.h+'mm">'
+       + '<rect x="0" y="0" width="'+P.w+'" height="'+P.h+'" fill="#ffffff"/>' + inner + "</svg>";
+}
+/* ================= 幾何チェック ================= */
+function runChecks(){
+  var res = { ok: true, msgs: [] };
+  function chk(cond, msg){ res.msgs.push((cond ? "OK " : "NG ") + msg); if (!cond) res.ok = false; }
+  chk(DIM.cavityW - DIM.paperW >= 6, "紙の横の余裕 " + (DIM.cavityW - DIM.paperW) + "mm");
+  chk(DIM.cavityH - DIM.paperH >= 6, "紙の縦の余裕 " + (DIM.cavityH - DIM.paperH) + "mm");
+  chk(DIM.focal >= 40 && DIM.focal <= 42.5, "焦点距離 " + DIM.focal + "mm");
+  var clear = (DIM.holderW - DIM.bodyOuterAtRim) / 2;
+  chk(clear >= 0.8, "ホルダーのクリアランス片側 " + clear + "mm");
+  chk(DIM.winX + DIM.winS / 2 === DIM.bodyW / 2 && DIM.winY + DIM.winS / 2 === DIM.bodyH / 2, "窓中心＝紙中心 (70,50)");
+  for (var p = 0; p < PAGES.length; p++){
+    buildPage(p, DESIGNS[0]);
+    var P = PAGES[p], es = NET.filter(function(e){ return e.page === p; });
+    es.forEach(function(e){
+      chk(e.x >= 8 && e.y >= 8 && e.x + e.w <= P.w - 8 && e.y + e.h <= P.h - 8,
+        "p" + (p + 1) + " " + e.id + " ページ内");
+    });
+    for (var i = 0; i < es.length; i++) for (var j = i + 1; j < es.length; j++){
+      var a = es[i], b = es[j];
+      var ox = Math.min(a.x + a.w, b.x + b.w) - Math.max(a.x, b.x);
+      var oy = Math.min(a.y + a.h, b.y + b.h) - Math.max(a.y, b.y);
+      if (ox > 0 && oy > 0 && ox * oy > 1) chk(false, "p" + (p + 1) + " 重なり " + a.id + " × " + b.id);
+    }
+    var cal = es.filter(function(e){ return e.kind === "cal"; });
+    if (P.tpl) chk(cal.length === 1 && Math.abs(Math.max(cal[0].w, cal[0].h) - 50) < 0.01, "p" + (p + 1) + " 較正線50mm");
+  }
+  return res;
+}
+/* ================= 印刷用画像（300dpi PNG） ================= */
+function pageToPNG(pageIdx, design){
+  return new Promise(function(resolve, reject){
+    var P = PAGES[pageIdx];
+    var svg = buildPage(pageIdx, design, true);
+    var url = URL.createObjectURL(new Blob([svg], { type: "image/svg+xml;charset=utf-8" }));
+    var img = new Image();
+    img.onload = function(){
+      try {
+        var scale = 300 / 25.4, cv = document.createElement("canvas");
+        cv.width = Math.round(P.w * scale); cv.height = Math.round(P.h * scale);
+        var cx = cv.getContext("2d");
+        cx.fillStyle = "#ffffff"; cx.fillRect(0, 0, cv.width, cv.height);
+        cx.drawImage(img, 0, 0, cv.width, cv.height);
+        URL.revokeObjectURL(url);
+        resolve(cv.toDataURL("image/png"));
+      } catch (e) { reject(e); }
+    };
+    img.onerror = function(){ URL.revokeObjectURL(url); reject(new Error("svg load failed")); };
+    img.src = url;
+  });
+}
+/* ================= ネガ→ポジ変換 ================= */
+function invertCanvas(cv, mono){
+  var cx = cv.getContext("2d");
+  var id = cx.getImageData(0, 0, cv.width, cv.height), dt = id.data;
+  for (var i = 0; i < dt.length; i += 4){
+    var r = 255 - dt[i], g = 255 - dt[i + 1], b = 255 - dt[i + 2];
+    if (mono){ var y = Math.round(0.299 * r + 0.587 * g + 0.114 * b); r = g = b = y; }
+    dt[i] = r; dt[i + 1] = g; dt[i + 2] = b;
+  }
+  cx.putImageData(id, 0, 0);
+  return cv;
+}
+var negaImg = null;
+function negaRender(){
+  if (!negaImg) return;
+  var mono = document.getElementById("negaMono").checked;
+  var w = negaImg.naturalWidth, h = negaImg.naturalHeight;
+  var sc = Math.min(1, 2048 / Math.max(w, h));
+  var cv = document.createElement("canvas");
+  cv.width = Math.round(w * sc); cv.height = Math.round(h * sc);
+  cv.getContext("2d").drawImage(negaImg, 0, 0, cv.width, cv.height);
+  invertCanvas(cv, mono);
+  var url = cv.toDataURL("image/jpeg", 0.92);
+  var box = document.getElementById("negaOut");
+  box.innerHTML = "";
+  var img = document.createElement("img");
+  img.src = url; img.alt = "ポジに変換した写真";
+  box.appendChild(img); box.style.display = "block";
+  var sv = document.getElementById("negaSave");
+  sv.href = url; sv.style.display = "block";
+}
+/* ================= 画面の制御 ================= */
+var curDesign = 0, curPage = 0;
+try { var sv = window.localStorage.getItem("pinhole_design"); if (sv !== null && DESIGNS[+sv]) curDesign = +sv; } catch (e) {}
+function renderSwatches(){
+  var box = document.getElementById("swatches"); box.innerHTML = "";
+  DESIGNS.forEach(function(d, i){
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "swatch"; b.setAttribute("aria-pressed", i === curDesign ? "true" : "false");
+    b.innerHTML = '<span class="dot" style="background:linear-gradient(180deg,' + d.top + ' 50%,' + d.body + ' 50%)"></span>' + esc(d.name);
+    b.addEventListener("click", function(){
+      curDesign = i;
+      try { window.localStorage.setItem("pinhole_design", String(i)); } catch (e) {}
+      renderSwatches(); renderPreview(); hidePrintImg();
+    });
+    box.appendChild(b);
+  });
+}
+function renderPageTabs(){
+  var box = document.getElementById("pagetabs"); box.innerHTML = "";
+  PAGES.forEach(function(P, i){
+    var b = document.createElement("button");
+    b.type = "button"; b.textContent = P.name; b.setAttribute("aria-pressed", i === curPage ? "true" : "false");
+    b.addEventListener("click", function(){ curPage = i; renderPageTabs(); renderPreview(); hidePrintImg(); });
+    box.appendChild(b);
+  });
+}
+function renderPreview(){
+  document.getElementById("preview").innerHTML = buildPage(curPage, DESIGNS[curDesign]);
+}
+function hidePrintImg(){
+  document.getElementById("printimg").style.display = "none";
+  document.getElementById("lnkDownload").style.display = "none";
+}
+function init(){
+  renderSwatches(); renderPageTabs(); renderPreview();
+  document.getElementById("btnMakeImg").addEventListener("click", function(){
+    var btn = this; btn.disabled = true; btn.textContent = "画像を作っています…";
+    pageToPNG(curPage, DESIGNS[curDesign]).then(function(dataURL){
+      var box = document.getElementById("printimg");
+      box.innerHTML = "";
+      var img = document.createElement("img");
+      img.src = dataURL; img.alt = PAGES[curPage].name + "の印刷用画像";
+      box.appendChild(img); box.style.display = "block";
+      var lnk = document.getElementById("lnkDownload");
+      lnk.href = dataURL; lnk.download = "pinhole-" + (curPage + 1) + "-" + DESIGNS[curDesign].id + ".png";
+      lnk.style.display = "block";
+      btn.disabled = false; btn.textContent = "このページの印刷用画像を作る";
+      box.scrollIntoView({ behavior: "smooth", block: "center" });
+    }).catch(function(){
+      btn.disabled = false; btn.textContent = "このページの印刷用画像を作る";
+      document.getElementById("boot-error").style.display = "block";
+    });
+  });
+  document.getElementById("negaBtn").addEventListener("click", function(){
+    document.getElementById("negaFile").click();
+  });
+  document.getElementById("negaFile").addEventListener("change", function(){
+    var f = this.files && this.files[0];
+    if (!f) return;
+    var url = URL.createObjectURL(f);
+    var img = new Image();
+    img.onload = function(){ negaImg = img; negaRender(); };
+    img.onerror = function(){ URL.revokeObjectURL(url); };
+    img.src = url;
+  });
+  document.getElementById("negaMono").addEventListener("change", negaRender);
+  window.__kit = { dims: DIM, designs: DESIGNS, pages: PAGES, buildPage: buildPage, pageToPNG: pageToPNG, runChecks: runChecks, invertCanvas: invertCanvas, net: function(){ return NET; } };
+}
+try { init(); } catch (e) { document.getElementById("boot-error").style.display = "block"; if (window.console) console.error(e); }
+</script>
+</body>
+</html>
